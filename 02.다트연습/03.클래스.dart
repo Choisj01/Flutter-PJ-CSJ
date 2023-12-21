@@ -25,7 +25,7 @@ void main(List<String> args) {
   print('나의 사랑하는 강아지 종류는 ${d2.name}이다!');
 
   ///// 값을 생성시에 초기화하는 Cat 사용하기 ///
-  Cat c1 = Cat("코리안숏헤어", 4, '갈색얼룩');
+  Cat c1 = Cat("코리안숏헤어", 4, '갈색얼룩',"고양이","펀치적","생선");
   print('나의 고양이 종은 ${c1.name}이고 나이는 ${c1.age}살, 색깔은 ${c1.color}이다!');
 
   // c1.name = '이집트고양이'; -> final이면 재할당 불가!
@@ -33,7 +33,7 @@ void main(List<String> args) {
 
 
   // 상속 받은 Cat 찍어보기
-  Cat c2 = Cat('페르시안 고양이', 13, "푸른색");
+  Cat c2 = Cat('페르시안 고양이', 13, "푸른색","고양이","개인적","고등어");
   print('내 고양이는 ${c2.name}이다. 나이는 ${c2.age}살이다. 울음소리는 ${c2.hearSound(c2.species)}한다! 고양이의 성격은 ${c2.character}이다.');
 
 
@@ -193,7 +193,15 @@ class Cat extends Pet{
   // 이니셜라이즈(initialize) 키워드 콜론(:)을 사용하여
   // 그 뒤에 super키워드(부모클래스)로 값을 초기화함!
   // super(초기화값들) -> 부모의 생성자 메서드와 동일!
-  Cat(this.name,this.age,this.color) : super('고양이', '내성적', '생선'){
+
+  // Cat(this.name,this.age,this.color) : 
+  //super('고양이', '내성적', '생선'){ -> 직접 부모속성 초기화
+
+  // -> 생성시 부모속성까지 초기화하려면 변수로 대체함!
+  // species,character,food 3개의 값을 변수로 받아서 부모속성값을
+  // 처리하도록 함!
+  Cat(this.name,this.age,this.color,String species,String character,String food) : 
+  super(species, character, food){
     print('Cat 생성자함수 코드구역');
     print('부모Pet클래스의 인기지수:${super.likePet}');
     // super키워드는 부모클래스 자신을 가리킴
