@@ -20,6 +20,7 @@ void main(List<String> args) {
 
   // 다른 변수에 Dog 클래스를 생성하여 사용!
   // 기존 d1과 연결성은 없다!
+  // Dog d2 = new Dog(); -> new 키워드 생략가능
   Dog d2 = Dog();
   print('나의 사랑하는 강아지 종류는 ${d2.name}이다!');
 
@@ -85,6 +86,23 @@ class MyClassIsPerfect{
 하기 때문에 부모 클래스의 값을 먼저 초기화 셋팅해야 함!!!
 
 -> 부모클래스 초기화방법:
+  클래스명 변수 = new 클래스명() -> new 키워드 생략가능
+  클래스명 변수 = 클래스명(셋팅할 값 보내기)
+
+  [ ->>> 상속받은 자식클래스 내부에서 생성자 초기화시 ]
+  자식클래스명(this.초기화속성들) : super(부모속성 초기화){}
+
+  ((다른방법)) -> 자식클래스 생성시 부모클래스 속성값도 보냄
+  자식클래스명(this.초기화속성들,새로운변수들) : super
+  (부모속성 초기화를 해야할 새로운변수들){}
+
+  [ super 키워드란? ]
+  -super 키워드는 부모클래스 자신을 가리킴
+
+  1. 사용상 super() 메서드로 쓰면 부모의 생성자임!
+  2. super.하위속성 또는 메서드로 접근할 수 있음
+  (편의상 super키워드 없이 바로 사용가능함!)
+
 
 
 *************************************/
@@ -97,7 +115,10 @@ class Pet{
   final String character;
   // 먹이종류
   final String food;
+  // 인기지수
+  double likePet = 50.0;
 
+  // 생성자 메서드
   Pet(this.species,this.character,this.food){
     print('부모 Pet 클래스 생성자!');
   }
@@ -174,6 +195,11 @@ class Cat extends Pet{
   // super(초기화값들) -> 부모의 생성자 메서드와 동일!
   Cat(this.name,this.age,this.color) : super('고양이', '내성적', '생선'){
     print('Cat 생성자함수 코드구역');
+    print('부모Pet클래스의 인기지수:${super.likePet}');
+    // super키워드는 부모클래스 자신을 가리킴
+    // super.하위속성 또는 메서드로 접근할 수 있음
+    // 편의상 super키워드 없이 바로 사용가능함!
+
   }
 
   // 클래스 메서드
