@@ -76,6 +76,7 @@ class KyungSu implements Saram{
   String say() => '$name씨는 무엇인가 말하고 있다!';
 
 } /////////// KyungSu 클래스 /////////////
+
 /******************************************* 
   [ 다트의 오버라이드(override) ]
   - 기존의 정의된 속성과 메서드를 재정의하는 것이다!
@@ -171,6 +172,53 @@ class SeoJun extends Namja {
 } ////// SeoJun 클래스 /////////////
 
 
+// 다중 속성 믹스인 활용을 위한 클래스 만들기 //////////
+// 취미에 대한 메서드를 구현한 Hobby 믹스인 만들기
+/// class 키워드가 없으면 단순 결합 클래스임(생성자없음!)
+mixin Hobby{
+  // 요리하다 메서드
+  String cook() =>'씨는 지금 요리한다!';
+  // 책을 읽다 메서드
+  String read() => '씨는 지금 책을 읽는다';
+
+} /////////// Hobby 믹스인 클래스 //////////
+
+// 가수 믹스인 만들기 //////////////
+// 믹스인에 on키워드를 사용하면 특정클래스를 상속받은 경우
+// 에만 다중상속을 하도록 제한할 수 있다!
+//on Namja 라는 것은 남자클래스를 상속한 경우만 믹스인 사용!
+// -> 결과적으로 남자가수에만 사용가능!
+mixin Singer on Namja { 
+  String sing() => "씨는 지금 노래한다";
+
+} /////// Singer 믹스인 클래스 ////
+
+////// 믹스인을 사용하는 이준호 배우겸 가수의 클래스만들기
+class JunHo extends Namja with Hobby,Singer {
+  // 생성자
+  JunHo(String name):super(name);
+
+  // 필수 재정의 매서드 : age()
+  @override
+  String age() => '$name씨는 33살이다!';
+
+  // 선택적 재정의  : cook() -> Hobby 믹스인 클래스 메서드
+  @override
+  String cook() => '$name${super.cook()}';
+  // Hobby 클래스의 cook()메서드는 이름이 없으므로
+  // 이름을 넣고 출력하기 위해 이 메서드를 호출하려고 함
+  // 이때 부모를 지칭하는 super 키워드를 쓰면 된다!
+  // super.cook()
+
+ // 선택적 재정의  : sing() -> Singer 믹스인 클래스 메서드
+  @override
+  String sing() => '$name${super.sing()}';
+  // 믹스인 Singer도 부모이므로 super 키워드에 잡힌다!
+  // 이름과 메시지를 합쳐서 리턴함!
+
+
+} /////////// JunHo 클래스 //////////////
+
 ///// 테스트를 수행하는 함수 ///////
 void testClass(){
   // 추상클래스를 구현한 경수클래스 인스턴스 생성
@@ -183,18 +231,33 @@ void testClass(){
   // print(KyungSu().eat());
   // print(KyungSu().say());
 
+  print('\n');
+
   // 추상클래스를 일반 상속받은 지현클래스 인스턴스 생성
   JeeHyun jh = JeeHyun('남지현');
   print(jh.age());
   print(jh.gender());
-  
+
   print(jh.eat()); 
-  // 재정의 안한 메서드는 Saram의 원본메서드가 출력됨!
+  // 재정의 안한 메서드는 
+  //Saram의 원본메서드가 출력됨!
+  print('\n');
 
   // 추상클래스에 추상클래스를 상속한 서준클래스 인스턴스 생성
   SeoJun sj = SeoJun('박서준');
   print(sj.age());
   print(sj.eat());
+
+  print('\n');
+
+  // 추상클래스와 여러 믹스인 클래스를 상속받은 준호클래스
+  // 인스턴스 생성하기
+  JunHo jho = JunHo('이준호');
+  print(jho.age());
+  print(jho.gender());
+  print(jho.cook());
+  print(jho.sing());
+
 
 
 } /////// testClass //////////////
