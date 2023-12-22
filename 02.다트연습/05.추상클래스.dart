@@ -189,7 +189,7 @@ mixin Hobby{
 //on Namja 라는 것은 남자클래스를 상속한 경우만 믹스인 사용!
 // -> 결과적으로 남자가수에만 사용가능!
 mixin Singer on Namja { 
-  String sing() => "씨는 지금 노래한다";
+  String sing() => "씨는 지금 노래한다!";
 
 } /////// Singer 믹스인 클래스 ////
 
