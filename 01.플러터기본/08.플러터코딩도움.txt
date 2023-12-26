@@ -50,6 +50,22 @@ const 생성자를 사용하여 생성하면 성능이 향상되고
                   fontWeight: FontWeight.bold, color: Colors.blueAccent),//<<<-콤마없음
             ),
 
+
+            [만약 안되면 
+        Open User Settings(JSON)에 아래 코드를 추가하자! ]
+            +++++++++++++++++++++++++++++++++++++++++++++++++++++
+            "[dart]": {
+                "editor.formatOnSave": true,
+                "editor.formatOnType": true,
+                "editor.rulers": [80],
+                "editor.selectionHighlight": false,
+                "editor.suggest.snippetsPreventQuickSuggestions": false,
+                "editor.suggestSelection": "first",
+                "editor.tabCompletion": "onlySnippets",
+                "editor.wordBasedSuggestions": false
+            },
+            +++++++++++++++++++++++++++++++++++++++++++
+
 3. 브라우저 연결화면의 오른쪽 상단의 
     "DEBUG"글자는 없앨 수 없나요? 
 
@@ -58,3 +74,4 @@ const 생성자를 사용하여 생성하면 성능이 향상되고
       debugShowCheckedModeBanner: false,
       ...다른코드...
     );
+
