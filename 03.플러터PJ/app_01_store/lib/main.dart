@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
       // "DEBUG" 표시 없애기
       debugShowCheckedModeBanner: false,
       // home에 작성하는 위젯이 실제 이 앱이 표시하는 위젯
-      home: StorePage(), // 이 클래스를 아래쪽에 생성함!
+      home: StorePage(), 
+      // 이 클래스를 아래쪽에 생성함!
     );
   }
 }
@@ -80,8 +81,23 @@ class StorePage extends StatelessWidget {
               ),
             ),
             // 이미지 추가하기(패딩으로 싼 첫번째 줄 아래)
-            Image.asset("assets/back.jpeg"),
-            Image.asset("assets/cloth.jpeg"),
+            // -> pubspec.yaml 파일에 경로 assets/ 로 설정됨!
+            //Expanded 위젯 - flex속성이 있어서 등분할 함!
+            Expanded(
+              child: Image.asset(
+                "bag.jpeg", //이미지 경로
+                fit: BoxFit.cover, // 이미지 채움 설정
+              ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ), // 이미지 사이 공백
+            Expanded(
+              child: Image.asset(
+                "cloth.jpeg", //이미지 경로
+                fit: BoxFit.cover, // 이미지 채움 설정
+              ),
+            ),
           ],
         ),
       ),
