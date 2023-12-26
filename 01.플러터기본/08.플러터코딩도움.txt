@@ -23,11 +23,11 @@ const 생성자를 사용하여 생성하면 성능이 향상되고
     프로젝트 파일 목록에서 
     'analysis_option.yaml' 파일 열기
     -> 코드 수정
-    rules: 바로 밑에 아래에 코드 2줄 추가
+    rules: 바로 밑에 아래에 코드 3줄 추가
     ++++++++++++++++++++++++++++++++++++++++++++++++++
     prefer_const_constructors: false
-    prefer_const_literals_to_create_immutables: false
-    prefer_const_constructors_in_immutables: false
+    prefer_const_literals_to_create_immutables: false
+    prefer_const_constructors_in_immutables: false
     ++++++++++++++++++++++++++++++++++++++++++++++++++
     컨트롤+S (저장) 후 VSCode 툴을 내렸다가 다시 띄워야함!
 
