@@ -11,7 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // 최상위 위젯 : 전체 틀 잡아줌!
-    return const MaterialApp(
+    return MaterialApp(
+      // "DEBUG" 표시 없애기
+       debugShowCheckedModeBanner: false,
       // home에 작성하는 위젯이 실제 이 앱이 표시하는 위젯
       home: StorePage(), // 이 클래스를 아래쪽에 생성함!
     );
@@ -26,11 +28,41 @@ class StorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         // 앱기본 방향시작은 세로방향(Column이다!-Row를 포함한다!)
         child: Column(
-          
+          // children 속성은 컬럼하위 요소들임!
+          children: [
+            /*
+              [ Padding 위젯 ]
+              padding: EdgeInsets.all(4방향전체),
+              padding: EdgeInsets.only(left/top/right/bottom특정방향만),
+              padding: EdgeInsets.symmetric(수직/수평중),
+           */
+
+            // Row - 가로방향 위젯요소 넣기
+            Padding(
+              padding: const EdgeInsets.all(25.0),
+              child: Row(children: [
+                Text("Woman",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,fontSize: 20.0,color: Colors.red),),
+                Spacer(),// 사이공간 일정하게 띄우기
+                Text("Kids",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,fontSize: 20.0,color: Colors.orange),),
+                Spacer(),// 사이공간 일정하게 띄우기
+                Text("Shoes",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,fontSize: 20.0,color: Colors.yellow),),
+                Spacer(),// 사이공간 일정하게 띄우기
+                Text("Bag",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,fontSize: 20.0,color: Colors.green),),
+              ],),
+            )
+          ],
         ),),
     );
   }
