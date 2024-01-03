@@ -1,10 +1,10 @@
-// 전체 앱의 테마 색상지정 클래스
+// 전체 앱의 테마색상 지정 클래스
 
-// 머티리얼 디자인이므로 머티리얼컬러라고 명명
-// 공식 머티리얼 디자인 색상 지정 클래스
+// 머티리얼 디자인 이므로 머티리얼컬러라고 명명
+// 공식 머티리얼 디자인 색상저정 클래스임!
 import 'package:flutter/material.dart';
 
-// 프라이머리 컬러란 앱의 아이덴티티를 나타내는 색상임!(플러터 정의)
+// 프라이머리컬러란 앱의 아이덴터티를 나타내는 색상임!(플러터정의)
 
 const MaterialColor primaryWhite = MaterialColor(
     0xFFFFFFFF,
@@ -25,11 +25,12 @@ const MaterialColor primaryWhite = MaterialColor(
 // 테마데이터를 리턴하는 함수를 만들자!
 ThemeData theme() {
   return ThemeData(
-      primarySwatch: primaryWhite,
-      // 상단의 앱바의 테마도 여기서 지정가능
-      // (아이콘색을 파란색으로 지정함)
-      appBarTheme: AppBarTheme(
-        iconTheme: IconThemeData(color: Colors.blue),
-      )
-    );
+    // 앱의 전체 테마 스와치(색상모음 지정)
+    primarySwatch: primaryWhite,
+    // 상단의 앱바의 테마도 여기서 지정가능
+    // (아이콘색을 파란색으로 지정함)
+    appBarTheme: AppBarTheme(
+      iconTheme: IconThemeData(color: Colors.blue),
+    ),
+  );
 }
