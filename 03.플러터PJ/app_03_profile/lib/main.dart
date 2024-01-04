@@ -9,6 +9,8 @@ import 'package:app_03_profile/components/profile_drawer.dart';
 import 'package:app_03_profile/components/profile_count_info.dart';
 // 프로파일 버튼 불러오기
 import 'package:app_03_profile/components/profile_buttons.dart';
+// 프로파일 버튼 불러오기
+import 'package:app_03_profile/components/profile_tab.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,6 +60,8 @@ class ProfilePage extends StatelessWidget {
           SizedBox(height: 20), // 위아래 간격
           // 3. 프로파일 버튼
           ProfileButtons(),
+          // 4. 프로파일 탭영역 : 끝부분까지 확장함! -> Expanded() 사용!
+          Expanded(child: ProfileTab()),
         ],
       ),
     );
