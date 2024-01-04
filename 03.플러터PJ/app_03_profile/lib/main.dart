@@ -7,7 +7,8 @@ import 'package:app_03_profile/components/profile_header.dart';
 import 'package:app_03_profile/components/profile_drawer.dart';
 // 프로파일 카운트 정보 불러오기
 import 'package:app_03_profile/components/profile_count_info.dart';
-
+// 프로파일 버튼 불러오기
+import 'package:app_03_profile/components/profile_buttons.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,8 +56,8 @@ class ProfilePage extends StatelessWidget {
           // 2. 프로파일 카운트 정보 : 컨텐츠 카운트 정보
           ProfileCountInfo(),
           SizedBox(height: 20), // 위아래 간격
-          // 3. 프로파일 버튼 
-          
+          // 3. 프로파일 버튼
+          ProfileButtons(),
         ],
       ),
     );
