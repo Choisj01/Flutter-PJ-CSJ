@@ -49,11 +49,14 @@ class ProfilePage extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(height: 20), // 위아래 간격
-          // 프로파일 헤더파트 : 인물 사진 및 소개
+          // 1. 프로파일 헤더파트 : 인물 사진 및 소개
           ProfileHeader(),
           SizedBox(height: 20), // 위아래 간격
-          // 프로파일 카운트 정보 : 컨텐츠 카운트 정보
+          // 2. 프로파일 카운트 정보 : 컨텐츠 카운트 정보
           ProfileCountInfo(),
+          SizedBox(height: 20), // 위아래 간격
+          // 3. 프로파일 버튼 
+          
         ],
       ),
     );
