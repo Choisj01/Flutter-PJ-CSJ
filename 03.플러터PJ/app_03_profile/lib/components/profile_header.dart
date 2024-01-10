@@ -31,7 +31,7 @@ Widget _buildHeaderAvatar() {
     // 둥근 이미지 아바타 만들기
     child: CircleAvatar(
       //배경이미지로 넣기 : assets에 있는 이미지
-      backgroundImage: AssetImage('avatar.png'),
+      backgroundImage: AssetImage('assets/avatar.png'),
     ),
   );
 }
