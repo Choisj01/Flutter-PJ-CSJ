@@ -41,8 +41,8 @@ class _CartDetailState extends State<CartDetail> {
     "Tesla Model3",
     "Cessna 150",
   ];
-  // 상품가격 리스트 [ 가격, 조회수, 별수 ]
-  Map<String, List> selectedPrice = {
+  // 상품정보 리스트 [ 가격, 조회수, 별수 ]
+  Map<String, List> goodsInfo = {
     "Living bicycle": [699, 26, 5],
     "Honda motorcycle": [1700, 35, 7],
     "Tesla Model3": [7800, 98, 3],
@@ -58,7 +58,9 @@ class _CartDetailState extends State<CartDetail> {
         _buildPicture(),
         // 2.선택버튼 : _buildSelector() -> _buildSelectButton()
         _buildSelector(),
-        // 3.상품정보 : 상품명+상품가격+별점+리뷰수+색상옵션+버튼
+        // 3.상품정보 : _buildCartInfo()
+        // 상품명+상품가격+별점+리뷰수+색상옵션+버튼
+        _buildCartInfo(),
       ],
     );
   }
@@ -131,4 +133,144 @@ class _CartDetailState extends State<CartDetail> {
       ),
     );
   } ////////////_buildSelectButton메서드//////////
+
+  // 3.상품정보위젯 생성 메서드 : _buildCartInfo()
+  // 상품명+상품가격+별점+리뷰수+색상옵션+버튼
+  Widget _buildCartInfo() {
+    return Padding(
+      padding: const EdgeInsets.all(30),
+      child: Column(
+        // 진행방향의 수직축(crossAxis)의 시작부분부터 정렬(왼쪽끝)
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // 1.이름/가격 : _buildNamePrice()
+          _buildNamePrice(),
+          // 2.별점/리뷰수 : _buildStarReview()
+          _buildStarReview(),
+          // 3.옵션 : _buildOption()
+          _buildOption(),
+          // 4.버튼 : _buildButton()
+          _buildButton(),
+        ],
+      ),
+    );
+  } ///////  _buildCartInfo메서드 //////////
+
+  // 1.이름/가격 위젯 만들기 메서드 : _buildNamePrice()
+  Widget _buildNamePrice() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: Row(
+        // 메인 축 정렬 양쪽 끝(사이간격만 주기)
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // 1. 상품명 : selectedTit 리스트형 변수값 읽어옴
+          // sequenceNum의 순번값이 변경될 때 이것도 업데이트 됨!!!!
+          Text(
+            selectedTit[sequenceNum],
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          // 2. 상품가격 : selectedPrice
+          Text(
+            // 달러($)는 특수문자니까 역슬래쉬(\)를 같이 씀!
+            '\$${goodsInfo[selectedTit[sequenceNum]]?[0]}',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  } ///////  _buildNamePrice메서드 /////
+
+  // 2.별점/리뷰수위젯 만들기 메서드  : _buildStarReview()
+  Widget _buildStarReview() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20.0),
+      child: Row(
+        children: [
+          // 여기에 for반복문을 쓰면 위젯을 반복할 수 있다!
+          // 한계수가 별의 개수를 제어하므로
+          // 셋팅된 별수 정보를 한계수에 넣어준다!
+          for (int i = 0; i < goodsInfo[selectedTit[sequenceNum]]?[2]; i++)
+            Icon(Icons.star, color: Colors.pink),
+          // 사이 간격 밀기
+          Spacer(),
+          // 리뷰수 보이기
+          Text(
+            // 달러($)는 특수문자니까 역슬래쉬(\)를 같이 씀!
+            'review(${goodsInfo[selectedTit[sequenceNum]]?[1]})',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.blue,
+            ),
+          ),
+        ],
+      ),
+    );
+  } /////// _buildStarReview()메서드 /////
+
+  // 3.옵션위젯 만들기 메서드  : _buildOption()
+  Widget _buildOption() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+        Text("Color Options"),
+        SizedBox(height: 10),
+        Row(
+          children: [
+            // 둥근모양의 색상 아이콘 메서드 호출
+            _buildDetailIcon(Colors.black),
+              _buildDetailIcon(Colors.green),
+              _buildDetailIcon(Colors.orange),
+              _buildDetailIcon(Colors.grey),
+              _buildDetailIcon(Colors.white),
+          ],
+        )
+      ]),
+    );
+  } ///////  _buildOption()메서드 /////
+
+  // 4.버튼 위젯 만들기 메서드 : _buildButton()
+  Widget _buildButton() {
+    return Padding(padding: const EdgeInsets.only(bottom: 10.0));
+  } ///////  _buildButton()메서드 /////
+
+  Widget _buildDetailIcon(Color mColor) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 10),
+      // 5. Stack의 첫 번째 Container 위젯위에 Positioned 위젯이 올라가는 형태
+      child: Stack(
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(),
+              shape: BoxShape.circle,
+            ),
+          ),
+          Positioned(
+            left: 5,
+            top: 5,
+            child: ClipOval(
+              child: Container(
+                color: mColor,
+                width: 40,
+                height: 40,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
 } //////////////// _CartDetailState클래스 ////////////////////
