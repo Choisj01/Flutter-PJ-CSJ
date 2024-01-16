@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       // 앱 테마설정
       theme: theme(),
       // 전체 바디에 해당하는 home속성
-      // home:
+      home:CartPage(),
     );
   }
 } ////////// MyApp 클래스 ////////////
@@ -56,7 +56,8 @@ class CartPage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: (){}, 
-          )
+          ),
+          SizedBox(width: 16),
         ],
     );
   } ///////////_buildCartAppBar메서드 ///////
