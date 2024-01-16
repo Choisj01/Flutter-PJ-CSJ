@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// 테마에 사용되는 주요 색상 상수값 셋팅파일
 
 const kPrimaryColor = MaterialColor(
   0xFFeeeeee,
