@@ -1,3 +1,4 @@
+import 'package:app_05_cart/components/cart_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:app_05_cart/theme.dart';
 
@@ -36,7 +37,10 @@ class CartPage extends StatelessWidget {
       appBar: _buildCartAppBar(),
       // 2.본문출력파트 바디
       body: Column(
-        children: [],
+        children: [
+          // 카트 페이지 상세구성 클래스 호출
+          CartDetail(),
+        ],
       ),
     );
   } //////////// build 메서드 /////////
